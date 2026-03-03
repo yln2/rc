@@ -1,0 +1,9 @@
+<fieldset style="width:10%;display:grid;"><legend>Radix-64 Calculator</legend>decimal<input type="text" id="0" placeholder="0123456789" size="10" onkeyup="ic(0,1)" onclick="oc(this.id)">
+radix64<input type="text" id="1" placeholder="ex. 1024=g0" size="10" onkeyup="ci(1,0)" onclick="oc(this.id)"></fieldset>
+<script>
+function ge(a){return document.getElementById(a)}
+function oc(a){ge(a).value=""}
+var dg="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_";tr=x=>x.toString(2).split(/(?=(?:.{6})+(?!.))/g).map(v=>dg[parseInt(v,2)]).join("");fr=x=>x.split("").reduce((s,v)=>s*64+dg.indexOf(v),0);
+function ic(a,b){ge(b).value=tr(ge(a).value)}
+function ci(a,b){ge(b).value=fr(ge(a).value)}
+</script>
