@@ -1,9 +1,8 @@
-<fieldset style="width:10%;display:grid;"><legend>Radix-64 Calculator</legend>decimal<input type="text" id="0" placeholder="0123456789" size="10" onkeyup="ic(0,1)" onclick="oc(this.id)">
-radix64<input type="text" id="1" placeholder="ex. 1024=g0" size="10" onkeyup="ci(1,0)" onclick="oc(this.id)"></fieldset>
-<script>
-function ge(a){return document.getElementById(a)}
-function oc(a){ge(a).value=""}
-var dg="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_";tr=x=>x.toString(2).split(/(?=(?:.{6})+(?!.))/g).map(v=>dg[parseInt(v,2)]).join("");fr=x=>x.split("").reduce((s,v)=>s*64+dg.indexOf(v),0);
-function ic(a,b){ge(b).value=tr(ge(a).value)}
-function ci(a,b){ge(b).value=fr(ge(a).value)}
+<fieldset style="width:90%;display:grid;"><legend>Radix Calculator</legend>decimal<textarea id="0"placeholder="ex. 1024=g0"onkeyup="ic(0,1)"onclick="oc(this.id)"rows=12></textarea><textarea id="9"placeholder="charset"rows=2>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ .</textarea>radix<textarea id="1"placeholder="ex. g0=1024"onkeyup="ci(1,0)"onclick="oc(this.id)"rows=12></textarea></fieldset>
+
+<script>ge=a=>document.getElementById(a),oc=a=>ge(a).value="",lt=a=>BigInt(a.length),nd=(a,b)=>BigInt(a.indexOf(b))
+dr=d=>{for(fv=[],d=BigInt(d),ct=0n;d>0n;ct++)fv[ct]=dl[d%lt(dl)],d/=lt(dl);return fv.reverse().join("")}
+rd=r=>{a=0n,b=lt(r);r.split("").forEach(c=>{a+=nd(dl,c)*lt(dl)**--b});return a.toString()}
+ic=(a,b)=>{dl=ge(9).value;ge(b).value=dr(ge(a).value)}
+ci=(a,b)=>{dl=ge(9).value;ge(b).value=rd(ge(a).value)}
 </script>
